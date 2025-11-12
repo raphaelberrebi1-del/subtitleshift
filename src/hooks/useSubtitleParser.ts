@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import srtParser2 from 'srt-parser-2';
-import { SubtitleEntry, ParsedSRTEntry } from '../types/subtitle.types';
+import type { SubtitleEntry, ParsedSRTEntry } from '../types/subtitle.types';
 import { v4 as uuidv4 } from 'uuid';
 
 interface UseSubtitleParserReturn {

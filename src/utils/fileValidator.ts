@@ -1,4 +1,4 @@
-import { FileValidationResult } from '../types/subtitle.types';
+import type { FileValidationResult } from '../types/subtitle.types';
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB in bytes
 const ALLOWED_EXTENSIONS = ['.srt', '.vtt'];

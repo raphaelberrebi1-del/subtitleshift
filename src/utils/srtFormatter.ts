@@ -1,4 +1,4 @@
-import { SubtitleEntry } from '../types/subtitle.types';
+import type { SubtitleEntry } from '../types/subtitle.types';
 import { millisecondsToSRTTime } from './timestampCalculator';
 
 /**

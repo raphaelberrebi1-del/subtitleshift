@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SubtitleEntry, SubtitleState, SubtitleActions } from '../types/subtitle.types';
+import type { SubtitleEntry, SubtitleState, SubtitleActions } from '../types/subtitle.types';
 import { formatToSRT, createSRTBlob } from '../utils/srtFormatter';
 import { shiftTimestamp } from '../utils/timestampCalculator';
 
