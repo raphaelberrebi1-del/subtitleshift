@@ -12,7 +12,7 @@ export function VideoPlayer() {
   const { } = useProStatus();
   const [showPaywall, setShowPaywall] = useState(false);
   const [showLoadModal, setShowLoadModal] = useState(false);
-  const playerRef = useRef<typeof ReactPlayer | null>(null);
+  const playerRef = useRef<any>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
