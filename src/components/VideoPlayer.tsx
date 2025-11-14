@@ -347,11 +347,11 @@ export function VideoPlayer() {
             controls={false}
             config={{
               youtube: {
-                playerVars: { showinfo: 0, modestbranding: 1 } as any
-              },
+                playerVars: { showinfo: 0, modestbranding: 1 }
+              } as any,
               vimeo: {
-                playerOptions: { byline: false, portrait: false } as any
-              }
+                playerOptions: { byline: false, portrait: false }
+              } as any
             }}
           />
 
