@@ -2,15 +2,22 @@ import { useState, useRef, DragEvent, ChangeEvent } from 'react';
 import { validateFile, formatFileSize } from '../utils/fileValidator';
 import { useSubtitleParser } from '../hooks/useSubtitleParser';
 import { useSubtitleStore } from '../store/subtitleStore';
+import { useProStatus } from '../hooks/useProStatus';
+import { PaywallModal } from './PaywallModal';
+import toast from 'react-hot-toast';
+
+const FREE_SUBTITLE_LIMIT = 200; // Temporarily increased for demo testing
 
 export function FileUpload() {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [showPaywall, setShowPaywall] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { parseFile, isLoading } = useSubtitleParser();
   const { loadFile } = useSubtitleStore();
+  const { isPro } = useProStatus();
 
   const handleFile = async (file: File) => {
     setError(null);
@@ -31,14 +38,35 @@ export function FileUpload() {
       // Parse the file
       const entries = await parseFile(file);
 
+      // Check if free user is over the limit
+      if (!isPro && entries.length > FREE_SUBTITLE_LIMIT) {
+        const limitedEntries = entries.slice(0, FREE_SUBTITLE_LIMIT);
+        useSubtitleStore.setState({ entries: limitedEntries, fileName: file.name, isDirty: false });
+        await loadFile(file);
+
+        toast.error(
+          `Free version limited to ${FREE_SUBTITLE_LIMIT} subtitles. File has ${entries.length} subtitles. Showing first ${FREE_SUBTITLE_LIMIT}.`,
+          { duration: 6000 }
+        );
+        setShowPaywall(true);
+        return;
+      }
+
       // Update store with parsed entries
       useSubtitleStore.setState({ entries, fileName: file.name, isDirty: false });
 
       // Load file metadata
       await loadFile(file);
+
+      toast.success(`Loaded ${entries.length} subtitle${entries.length !== 1 ? 's' : ''} successfully!`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load file');
     }
+  };
+
+  const handleUpgrade = () => {
+    setShowPaywall(false);
+    document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -185,6 +213,48 @@ export function FileUpload() {
           ))}
         </div>
       )}
+
+      {/* YouTube Caption Helper */}
+      <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-5 border border-blue-200 dark:border-blue-800">
+        <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Editing YouTube Captions?
+        </h4>
+        <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
+          SubtitleShift edits existing subtitle files. To edit YouTube's auto-captions:
+        </p>
+        <ol className="text-sm text-blue-800 dark:text-blue-200 space-y-2 ml-4">
+          <li className="flex items-start">
+            <span className="font-semibold mr-2">1.</span>
+            <span>Go to <a href="https://studio.youtube.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600 dark:hover:text-blue-300">YouTube Studio</a> → Subtitles</span>
+          </li>
+          <li className="flex items-start">
+            <span className="font-semibold mr-2">2.</span>
+            <span>Select your video → Download subtitle file (.srt)</span>
+          </li>
+          <li className="flex items-start">
+            <span className="font-semibold mr-2">3.</span>
+            <span>Upload it here, edit timestamps/text, then export</span>
+          </li>
+          <li className="flex items-start">
+            <span className="font-semibold mr-2">4.</span>
+            <span>Re-upload the edited file to YouTube Studio</span>
+          </li>
+        </ol>
+        <p className="text-xs text-blue-700 dark:text-blue-300 mt-3 italic">
+          Or load your video first using the Video Preview section below →
+        </p>
+      </div>
+
+      {/* Paywall Modal */}
+      <PaywallModal
+        isOpen={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        feature="Unlimited subtitles"
+        onUpgrade={handleUpgrade}
+      />
     </div>
   );
 }

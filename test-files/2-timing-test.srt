@@ -1,0 +1,39 @@
+1
+00:00:03,000 --> 00:00:05,000
+These subtitles are 2 seconds too late!
+
+2
+00:00:06,000 --> 00:00:08,500
+Use the timestamp shifter to fix them.
+
+3
+00:00:09,000 --> 00:00:11,500
+Try shifting by -2 seconds.
+
+4
+00:00:12,000 --> 00:00:14,000
+Perfect timing is crucial for videos.
+
+5
+00:00:15,000 --> 00:00:17,500
+SubtitleShift makes this instant.
+
+6
+00:00:18,000 --> 00:00:20,000
+No more manual timestamp calculations!
+
+7
+00:00:21,000 --> 00:00:23,500
+Just enter the offset and apply.
+
+8
+00:00:24,000 --> 00:00:26,000
+Preview before making changes.
+
+9
+00:00:27,000 --> 00:00:29,500
+Then export your corrected file.
+
+10
+00:00:30,000 --> 00:00:32,000
+Done in 30 seconds!

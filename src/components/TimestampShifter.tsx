@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useSubtitleStore } from '../store/subtitleStore';
 import { formatDuration } from '../utils/timestampCalculator';
+import toast from 'react-hot-toast';
+import { Target } from 'lucide-react';
 
 export function TimestampShifter() {
   const [offset, setOffset] = useState<string>('0');
@@ -33,6 +36,11 @@ export function TimestampShifter() {
     if (!isValidOffset) return;
 
     shiftAllTimestamps(offsetMs);
+
+    const offsetSeconds = offsetMs / 1000;
+    const sign = offsetSeconds >= 0 ? '+' : '';
+    toast.success(`Timestamps shifted by ${sign}${offsetSeconds.toFixed(2)}s for ${entries.length} subtitles`);
+
     setOffset('0');
     setShowPreview(false);
   };
@@ -51,8 +59,9 @@ export function TimestampShifter() {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-        🎯 Timestamp Adjuster
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+        <Target className="w-5 h-5 text-primary-500" />
+        Timestamp Adjuster
       </h2>
 
       <div className="space-y-4">
@@ -113,86 +122,115 @@ export function TimestampShifter() {
             Quick shifts:
           </p>
           <div className="flex flex-wrap gap-2">
-            {[-5, -2, -1, -0.5, 0.5, 1, 2, 5].map((seconds) => (
-              <button
+            {[-5, -2, -1, -0.5, 0.5, 1, 2, 5].map((seconds, index) => (
+              <motion.button
                 key={seconds}
                 onClick={() => handleQuickShift(seconds)}
                 className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300
                          rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {seconds > 0 ? '+' : ''}
                 {seconds}s
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
 
         {/* Preview */}
-        {showPreview && isValidOffset && (previewFirst || previewLast) && (
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <h3 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-2">
-              Preview
-            </h3>
-            <div className="space-y-2 text-sm">
-              {previewFirst && (
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">First subtitle starts:</span>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-500 dark:text-gray-400 line-through">
-                      {previewFirst.original}
-                    </span>
-                    <span className="text-gray-900 dark:text-gray-100 font-medium">
-                      → {previewFirst.adjusted}
-                    </span>
-                  </div>
-                </div>
-              )}
-              {previewLast && (
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Last subtitle ends:</span>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-500 dark:text-gray-400 line-through">
-                      {previewLast.original}
-                    </span>
-                    <span className="text-gray-900 dark:text-gray-100 font-medium">
-                      → {previewLast.adjusted}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {showPreview && isValidOffset && (previewFirst || previewLast) && (
+            <motion.div
+              className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4"
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: 'auto', marginTop: '1rem' }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h3 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-2">
+                Preview
+              </h3>
+              <div className="space-y-2 text-sm">
+                {previewFirst && (
+                  <motion.div
+                    className="flex items-center justify-between"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
+                  >
+                    <span className="text-gray-600 dark:text-gray-400">First subtitle starts:</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-500 dark:text-gray-400 line-through">
+                        {previewFirst.original}
+                      </span>
+                      <span className="text-gray-900 dark:text-gray-100 font-medium">
+                        → {previewFirst.adjusted}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+                {previewLast && (
+                  <motion.div
+                    className="flex items-center justify-between"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: 0.15 }}
+                  >
+                    <span className="text-gray-600 dark:text-gray-400">Last subtitle ends:</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-500 dark:text-gray-400 line-through">
+                        {previewLast.original}
+                      </span>
+                      <span className="text-gray-900 dark:text-gray-100 font-medium">
+                        → {previewLast.adjusted}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-3 pt-2">
-          <button
+          <motion.button
             onClick={() => setShowPreview(!showPreview)}
             disabled={!isValidOffset || offsetMs === 0}
             className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300
                      bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600
                      transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={isValidOffset && offsetMs !== 0 ? { scale: 1.02 } : {}}
+            whileTap={isValidOffset && offsetMs !== 0 ? { scale: 0.98 } : {}}
           >
             {showPreview ? 'Hide' : 'Show'} Preview
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={handleApply}
             disabled={!isValidOffset || offsetMs === 0}
             className="px-6 py-2 text-sm font-medium text-white bg-primary-500 rounded-lg
                      hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed
                      shadow-sm"
+            whileHover={isValidOffset && offsetMs !== 0 ? { scale: 1.05, y: -2 } : {}}
+            whileTap={isValidOffset && offsetMs !== 0 ? { scale: 0.95 } : {}}
           >
             Apply Shift
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={handleReset}
             className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400
                      hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Reset
-          </button>
+          </motion.button>
         </div>
 
         {/* Info Box */}

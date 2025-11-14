@@ -10,15 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paddle/paddle-node-sdk": "^3.4.0",
+    "@vercel/postgres": "^0.10.0",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^12.23.24",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.553.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hot-toast": "^2.6.0",
     "react-player": "^3.3.3",
+    "react-router-dom": "^7.9.5",
     "srt-parser-2": "^1.2.3",
     "uuid": "^13.0.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",

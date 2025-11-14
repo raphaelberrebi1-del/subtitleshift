@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useSubtitleStore } from '../store/subtitleStore';
 import { downloadSRT } from '../utils/srtFormatter';
 import { formatToSRT } from '../utils/srtFormatter';
+import toast from 'react-hot-toast';
+import { Save } from 'lucide-react';
 
 export function ExportPanel() {
   const [customFilename, setCustomFilename] = useState('');
@@ -20,7 +22,12 @@ export function ExportPanel() {
 
     downloadSRT(srtContent, exportFilename);
 
-    // Show success message
+    // Show success toast
+    toast.success(`File exported successfully as "${exportFilename}"`, {
+      duration: 4000,
+    });
+
+    // Show success message (can be removed since we have toast now)
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 3000);
 
@@ -32,8 +39,9 @@ export function ExportPanel() {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-        💾 Export Subtitle File
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+        <Save className="w-5 h-5 text-primary-500" />
+        Export Subtitle File
       </h2>
 
       <div className="space-y-4">

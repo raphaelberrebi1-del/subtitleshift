@@ -1,0 +1,399 @@
+1
+00:00:00,000 --> 00:00:02,500
+This is subtitle 1 for performance testing.
+
+2
+00:00:03,000 --> 00:00:05,500
+This is subtitle 2 for performance testing.
+
+3
+00:00:06,000 --> 00:00:08,500
+This is subtitle 3 for performance testing.
+
+4
+00:00:09,000 --> 00:00:11,500
+This is subtitle 4 for performance testing.
+
+5
+00:00:12,000 --> 00:00:14,500
+This is subtitle 5 for performance testing.
+
+6
+00:00:15,000 --> 00:00:17,500
+This is subtitle 6 for performance testing.
+
+7
+00:00:18,000 --> 00:00:20,500
+This is subtitle 7 for performance testing.
+
+8
+00:00:21,000 --> 00:00:23,500
+This is subtitle 8 for performance testing.
+
+9
+00:00:24,000 --> 00:00:26,500
+This is subtitle 9 for performance testing.
+
+10
+00:00:27,000 --> 00:00:29,500
+This is subtitle 10 for performance testing.
+
+11
+00:00:30,000 --> 00:00:32,500
+Testing scrolling performance with many entries.
+
+12
+00:00:33,000 --> 00:00:35,500
+The editor should handle this smoothly.
+
+13
+00:00:36,000 --> 00:00:38,500
+Virtualization helps with large lists.
+
+14
+00:00:39,000 --> 00:00:41,500
+Export should also be fast.
+
+15
+00:00:42,000 --> 00:00:44,500
+Testing find & replace across many entries.
+
+16
+00:00:45,000 --> 00:00:47,500
+Timestamp shifting should work instantly.
+
+17
+00:00:48,000 --> 00:00:50,500
+Even with 100+ subtitles loaded.
+
+18
+00:00:51,000 --> 00:00:53,500
+This file continues for many more entries.
+
+19
+00:00:54,000 --> 00:00:56,500
+Keep scrolling to see them all.
+
+20
+00:00:57,000 --> 00:00:59,500
+Entry 20 - halfway to our first milestone.
+
+21
+00:01:00,000 --> 00:01:02,500
+Performance testing is crucial for large files.
+
+22
+00:01:03,000 --> 00:01:05,500
+Users often work with movies and documentaries.
+
+23
+00:01:06,000 --> 00:01:08,500
+These can have hundreds of subtitle entries.
+
+24
+00:01:09,000 --> 00:01:11,500
+The app needs to stay responsive throughout.
+
+25
+00:01:12,000 --> 00:01:14,500
+Scrolling should feel smooth and natural.
+
+26
+00:01:15,000 --> 00:01:17,500
+Editing one subtitle shouldn't lag the interface.
+
+27
+00:01:18,000 --> 00:01:20,500
+Find & replace should complete in under a second.
+
+28
+00:01:21,000 --> 00:01:23,500
+Timestamp shifts should apply instantly.
+
+29
+00:01:24,000 --> 00:01:26,500
+Export functionality must be quick too.
+
+30
+00:01:27,000 --> 00:01:29,500
+Entry 30 - one third through this test.
+
+31
+00:01:30,000 --> 00:01:32,500
+Testing continues with more realistic content.
+
+32
+00:01:33,000 --> 00:01:35,500
+This subtitle talks about performance metrics.
+
+33
+00:01:36,000 --> 00:01:38,500
+Monitoring frame rates during scroll is important.
+
+34
+00:01:39,000 --> 00:01:41,500
+Browser DevTools can help identify bottlenecks.
+
+35
+00:01:42,000 --> 00:01:44,500
+React's virtual DOM helps with re-renders.
+
+36
+00:01:45,000 --> 00:01:47,500
+But we should still optimize render cycles.
+
+37
+00:01:48,000 --> 00:01:50,500
+Memoization prevents unnecessary updates.
+
+38
+00:01:51,000 --> 00:01:53,500
+useCallback and useMemo are useful hooks.
+
+39
+00:01:54,000 --> 00:01:56,500
+State management affects performance too.
+
+40
+00:01:57,000 --> 00:01:59,500
+Entry 40 - getting closer to halfway.
+
+41
+00:02:00,000 --> 00:02:02,500
+Zustand's shallow equality checks help performance.
+
+42
+00:02:03,000 --> 00:02:05,500
+Only subscribing to needed state slices matters.
+
+43
+00:02:06,000 --> 00:02:08,500
+Avoiding full store re-renders is key.
+
+44
+00:02:09,000 --> 00:02:11,500
+For very large files, pagination could help.
+
+45
+00:02:12,000 --> 00:02:14,500
+Or virtual scrolling with react-window library.
+
+46
+00:02:15,000 --> 00:02:17,500
+These techniques render only visible items.
+
+47
+00:02:18,000 --> 00:02:20,500
+Saving memory and improving scroll performance.
+
+48
+00:02:21,000 --> 00:02:23,500
+But for 100 entries, DOM can handle it fine.
+
+49
+00:02:24,000 --> 00:02:26,500
+It's when you get to 500+ that it matters more.
+
+50
+00:02:27,000 --> 00:02:29,500
+Entry 50 - halfway milestone reached!
+
+51
+00:02:30,000 --> 00:02:32,500
+Let's continue testing with more content.
+
+52
+00:02:33,000 --> 00:02:35,500
+Character count warnings should display correctly.
+
+53
+00:02:36,000 --> 00:02:38,500
+Even with many subtitles on screen at once.
+
+54
+00:02:39,000 --> 00:02:41,500
+Yellow warning icons shouldn't cause lag.
+
+55
+00:02:42,000 --> 00:02:44,500
+Inline editing should open instantly on click.
+
+56
+00:02:45,000 --> 00:02:47,500
+Textarea should focus without delay.
+
+57
+00:02:48,000 --> 00:02:50,500
+Saving changes should update immediately.
+
+58
+00:02:51,000 --> 00:02:53,500
+No flickering or visual glitches allowed.
+
+59
+00:02:54,000 --> 00:02:56,500
+The timestamp shifter preview is important.
+
+60
+00:02:57,000 --> 00:02:59,500
+Entry 60 - past the halfway point now.
+
+61
+00:03:00,000 --> 00:03:02,500
+Preview should calculate shifts for all entries.
+
+62
+00:03:03,000 --> 00:03:05,500
+But only display a sample to avoid lag.
+
+63
+00:03:06,000 --> 00:03:08,500
+Maybe show first 5 and last 5 entries.
+
+64
+00:03:09,000 --> 00:03:11,500
+This gives users confidence without performance hit.
+
+65
+00:03:12,000 --> 00:03:14,500
+The Apply button should work fast too.
+
+66
+00:03:15,000 --> 00:03:17,500
+Shifting 100 timestamps takes milliseconds.
+
+67
+00:03:18,000 --> 00:03:20,500
+Modern JavaScript is quite efficient.
+
+68
+00:03:21,000 --> 00:03:23,500
+Array map operations are optimized well.
+
+69
+00:03:24,000 --> 00:03:26,500
+Browser engines handle these quickly.
+
+70
+00:03:27,000 --> 00:03:29,500
+Entry 70 - approaching the final stretch.
+
+71
+00:03:30,000 --> 00:03:32,500
+Find & replace needs careful testing too.
+
+72
+00:03:33,000 --> 00:03:35,500
+Searching through 100 entries should be instant.
+
+73
+00:03:36,000 --> 00:03:38,500
+Regular expressions are fast in JavaScript.
+
+74
+00:03:39,000 --> 00:03:41,500
+The match counter should update without lag.
+
+75
+00:03:42,000 --> 00:03:44,500
+Replace All operation might take longer.
+
+76
+00:03:45,000 --> 00:03:47,500
+But still should complete within 100ms.
+
+77
+00:03:48,000 --> 00:03:50,500
+Loading states help manage user expectations.
+
+78
+00:03:51,000 --> 00:03:53,500
+A brief spinner shows work is happening.
+
+79
+00:03:54,000 --> 00:03:56,500
+Export to SRT is another critical operation.
+
+80
+00:03:57,000 --> 00:03:59,500
+Entry 80 - just 20 more to go!
+
+81
+00:04:00,000 --> 00:04:02,500
+Converting entries back to SRT format is simple.
+
+82
+00:04:03,000 --> 00:04:05,500
+Template literals make string building easy.
+
+83
+00:04:06,000 --> 00:04:08,500
+The UTF-8 BOM ensures Windows compatibility.
+
+84
+00:04:09,000 --> 00:04:11,500
+Blob creation is a synchronous operation.
+
+85
+00:04:12,000 --> 00:04:14,500
+Download triggering works via anchor element.
+
+86
+00:04:15,000 --> 00:04:17,500
+This all happens client-side for privacy.
+
+87
+00:04:18,000 --> 00:04:20,500
+No server uploads or processing needed.
+
+88
+00:04:21,000 --> 00:04:23,500
+Files never leave the user's computer.
+
+89
+00:04:24,000 --> 00:04:26,500
+This is a major selling point for SubtitleShift.
+
+90
+00:04:27,000 --> 00:04:29,500
+Entry 90 - almost at the finish line!
+
+91
+00:04:30,000 --> 00:04:32,500
+Memory management is important for large files.
+
+92
+00:04:33,000 --> 00:04:35,500
+Undo history is limited to 50 steps.
+
+93
+00:04:36,000 --> 00:04:38,500
+This prevents unlimited memory growth.
+
+94
+00:04:39,000 --> 00:04:41,500
+50 steps is more than enough for most users.
+
+95
+00:04:42,000 --> 00:04:44,500
+File size limit of 50MB is reasonable too.
+
+96
+00:04:45,000 --> 00:04:47,500
+Most SRT files are well under 1MB actually.
+
+97
+00:04:48,000 --> 00:04:50,500
+Even long movies rarely exceed a few MB.
+
+98
+00:04:51,000 --> 00:04:53,500
+The 50MB limit is quite generous.
+
+99
+00:04:54,000 --> 00:04:56,500
+Final entry - performance testing complete!
+
+100
+00:04:57,000 --> 00:04:59,500
+This file now has 100 subtitles for thorough testing.

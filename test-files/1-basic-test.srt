@@ -1,0 +1,19 @@
+1
+00:00:01,000 --> 00:00:03,000
+Hello and welcome!
+
+2
+00:00:04,000 --> 00:00:06,500
+This is a simple test subtitle file.
+
+3
+00:00:07,000 --> 00:00:09,500
+SubtitleShift makes editing easy.
+
+4
+00:00:10,000 --> 00:00:12,500
+Try shifting these timestamps!
+
+5
+00:00:13,000 --> 00:00:15,000
+That's it for the basic test.

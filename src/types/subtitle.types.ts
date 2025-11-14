@@ -44,6 +44,7 @@ export interface SubtitleActions {
   setPlaybackTime: (time: number) => void;
   setIsPlaying: (playing: boolean) => void;
   setVideoUrl: (url: string | null) => void;
+  clearEntries: () => void;
 }
 
 /**

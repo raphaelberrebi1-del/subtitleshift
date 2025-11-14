@@ -247,4 +247,15 @@ export const useSubtitleStore = create<SubtitleStore>((set, get) => ({
   setVideoUrl: (url: string | null) => {
     set({ videoUrl: url });
   },
+
+  clearEntries: () => {
+    set({
+      entries: [],
+      currentEntry: null,
+      history: [],
+      historyIndex: -1,
+      fileName: '',
+      isDirty: false,
+    });
+  },
 }));

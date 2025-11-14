@@ -1,0 +1,47 @@
+1
+00:00:01,000 --> 00:00:03,000
+Welcome to teh typo test file!
+
+2
+00:00:04,000 --> 00:00:06,000
+This file has teh word "teh" repeated.
+
+3
+00:00:07,000 --> 00:00:09,000
+Use find & replace to fix teh typos.
+
+4
+00:00:10,000 --> 00:00:12,000
+Search for "teh" and replace with "the".
+
+5
+00:00:13,000 --> 00:00:15,000
+Teh find & replace feature works great!
+
+6
+00:00:16,000 --> 00:00:18,000
+It will find all instances of teh error.
+
+7
+00:00:19,000 --> 00:00:21,000
+Then replace them all in one click.
+
+8
+00:00:22,000 --> 00:00:24,000
+No need to edit teh text manually.
+
+9
+00:00:25,000 --> 00:00:27,000
+This saves so much time for teh user!
+
+10
+00:00:28,000 --> 00:00:30,000
+You can also use case-sensitive mode.
+
+11
+00:00:31,000 --> 00:00:33,000
+Teh counter shows how many matches found.
+
+12
+00:00:34,000 --> 00:00:36,000
+Try it now - fix all teh typos!

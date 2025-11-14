@@ -1,0 +1,59 @@
+1
+00:00:00,500 --> 00:00:02,500
+SubtitleShift: Fix subtitle timing instantly
+
+2
+00:00:03,000 --> 00:00:05,500
+Content creators face a common problem:
+
+3
+00:00:06,000 --> 00:00:08,500
+Auto-generated subtitles are always off by a few seconds.
+
+4
+00:00:09,000 --> 00:00:11,500
+Existing tools force you into expensive subscriptions.
+
+5
+00:00:12,000 --> 00:00:14,500
+Or require downloading complex desktop software.
+
+6
+00:00:15,000 --> 00:00:17,000
+That's why we built SubtitleShift.
+
+7
+00:00:17,500 --> 00:00:19,500
+Upload your SRT file in seconds.
+
+8
+00:00:20,000 --> 00:00:22,500
+Adjust timing with our one-click shifter.
+
+9
+00:00:23,000 --> 00:00:25,500
+Edit text directly with inline editing.
+
+10
+00:00:26,000 --> 00:00:28,500
+Use find & replace for repeated errors.
+
+11
+00:00:29,000 --> 00:00:31,000
+Everything happens in your browser.
+
+12
+00:00:31,500 --> 00:00:33,500
+Your files never leave your computer.
+
+13
+00:00:34,000 --> 00:00:36,000
+100% private and secure.
+
+14
+00:00:36,500 --> 00:00:38,500
+Export your fixed subtitles instantly.
+
+15
+00:00:39,000 --> 00:00:41,500
+Try SubtitleShift today - it's free!
