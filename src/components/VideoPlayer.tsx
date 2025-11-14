@@ -9,10 +9,10 @@ import type { SubtitleEntry } from '../types/subtitle.types';
 import toast from 'react-hot-toast';
 
 export function VideoPlayer() {
-  const { isPro } = useProStatus();
+  const { } = useProStatus();
   const [showPaywall, setShowPaywall] = useState(false);
   const [showLoadModal, setShowLoadModal] = useState(false);
-  const playerRef = useRef<ReactPlayer>(null);
+  const playerRef = useRef<typeof ReactPlayer | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -335,7 +335,7 @@ export function VideoPlayer() {
             volume={volume}
             muted={isMuted}
             playbackRate={playbackSpeed}
-            onProgress={handleProgress}
+            onProgress={handleProgress as any}
             onReady={handleReady}
             onError={handleError}
             onPlay={() => setIsPlaying(true)}
@@ -347,10 +347,10 @@ export function VideoPlayer() {
             controls={false}
             config={{
               youtube: {
-                playerVars: { showinfo: 0, modestbranding: 1 }
+                playerVars: { showinfo: 0, modestbranding: 1 } as any
               },
               vimeo: {
-                playerOptions: { byline: false, portrait: false }
+                playerOptions: { byline: false, portrait: false } as any
               }
             }}
           />

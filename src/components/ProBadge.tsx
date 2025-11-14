@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProStatus } from '../hooks/useProStatus';
 import { activateLicense, deactivateLicense, generateDemoLicenseKey, getLicenseInfo } from '../utils/license';
-import { initializePaddle, openPaddleCheckout, openDemoCheckout } from '../utils/paddle';
+import { initializePaddle, openDemoCheckout } from '../utils/paddle';
 import toast from 'react-hot-toast';
-import { Sparkles } from 'lucide-react';
 
 interface Device {
   id: number;

@@ -1,5 +1,5 @@
-import { useState, useRef, DragEvent, ChangeEvent } from 'react';
-import { validateFile, formatFileSize } from '../utils/fileValidator';
+import { useState, useRef, type DragEvent, type ChangeEvent } from 'react';
+import { validateFile } from '../utils/fileValidator';
 import { useSubtitleParser } from '../hooks/useSubtitleParser';
 import { useSubtitleStore } from '../store/subtitleStore';
 import { useProStatus } from '../hooks/useProStatus';

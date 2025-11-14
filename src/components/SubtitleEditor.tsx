@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useSubtitleStore } from '../store/subtitleStore';
 import { useProStatus } from '../hooks/useProStatus';
 import { PaywallModal } from './PaywallModal';
@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { Edit } from 'lucide-react';
 
 export function SubtitleEditor() {
-  const { entries, updateEntry, currentEntry, setCurrentEntry, videoUrl, splitEntry, mergeEntries, playbackTime } = useSubtitleStore();
+  const { entries, updateEntry, currentEntry, setCurrentEntry, videoUrl, splitEntry, mergeEntries } = useSubtitleStore();
   const { isPro } = useProStatus();
   const [showPaywall, setShowPaywall] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -189,7 +189,7 @@ export function SubtitleEditor() {
       </div>
 
       <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2">
-        {entries.map((entry, index) => {
+        {entries.map((entry) => {
           const isEditing = editingId === entry.id;
           const isCurrent = currentEntry === entry.id;
           const warning = hasWarning(entry.text);

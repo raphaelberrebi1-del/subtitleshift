@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { Search } from 'lucide-react';
 
 export function FindReplace() {
-  const { isPro } = useProStatus();
+  const { } = useProStatus();
   const [showPaywall, setShowPaywall] = useState(false);
   const [findText, setFindText] = useState('');
   const [replaceText, setReplaceText] = useState('');

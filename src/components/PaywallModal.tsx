@@ -7,10 +7,10 @@ interface PaywallModalProps {
   isOpen: boolean;
   onClose: () => void;
   feature: string;
-  onUpgrade: () => void;
+  onUpgrade?: () => void;
 }
 
-export function PaywallModal({ isOpen, onClose, feature, onUpgrade }: PaywallModalProps) {
+export function PaywallModal({ isOpen, onClose, feature }: PaywallModalProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -130,10 +130,10 @@ export function PaywallModal({ isOpen, onClose, feature, onUpgrade }: PaywallMod
 
 interface UpgradeBannerProps {
   message: string;
-  onUpgrade: () => void;
+  onUpgrade?: () => void;
 }
 
-export function UpgradeBanner({ message, onUpgrade }: UpgradeBannerProps) {
+export function UpgradeBanner({ message }: UpgradeBannerProps) {
   const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();
 
