@@ -345,14 +345,6 @@ export function VideoPlayer() {
             height="500px"
             style={{ maxHeight: '500px' }}
             controls={false}
-            config={{
-              youtube: {
-                playerVars: { showinfo: 0, modestbranding: 1 }
-              } as any,
-              vimeo: {
-                playerOptions: { byline: false, portrait: false }
-              } as any
-            }}
           />
 
           {/* Subtitle Overlay */}
