@@ -1,29 +1,37 @@
 import { generateDemoLicenseKey, activateLicense } from './license';
 
-// Paddle configuration
-export const PADDLE_VENDOR_ID = '41478'; // Paddle Sandbox Vendor ID
-export const PADDLE_PRODUCT_ID = 'pro_01ka4pyp8e7q9m90kbkrymgkn6'; // SubtitleShift Pro product
+// Paddle Billing configuration
+export const PADDLE_CLIENT_TOKEN = 'test_41478'; // Sandbox client-side token (test_<vendor_id>)
+export const PADDLE_PRICE_ID = 'pri_01ka4qk8gwrfyjm49nx805kdas'; // SubtitleShift Pro price ID
+export const PADDLE_ENVIRONMENT = 'sandbox'; // 'sandbox' or 'production'
 
-// Initialize Paddle
+// Initialize Paddle Billing (v2)
 export function initializePaddle() {
   if (typeof window === 'undefined') return;
 
-  // Load Paddle script if not already loaded
+  // Load Paddle Billing script if not already loaded
   if (!(window as any).Paddle) {
     const script = document.createElement('script');
-    script.src = 'https://cdn.paddle.com/paddle/paddle.js';
+    script.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
     script.async = true;
     document.head.appendChild(script);
 
     script.onload = () => {
-      // Use sandbox for testing, remove .Sandbox for production
-      (window as any).Paddle.Environment.set('sandbox');
-      (window as any).Paddle.Setup({ vendor: parseInt(PADDLE_VENDOR_ID) });
+      (window as any).Paddle.Initialize({
+        token: PADDLE_CLIENT_TOKEN,
+        environment: PADDLE_ENVIRONMENT,
+      });
     };
+  } else if ((window as any).Paddle && !(window as any).Paddle.Initialized) {
+    // Already loaded but not initialized
+    (window as any).Paddle.Initialize({
+      token: PADDLE_CLIENT_TOKEN,
+      environment: PADDLE_ENVIRONMENT,
+    });
   }
 }
 
-// Open Paddle checkout
+// Open Paddle Billing checkout
 export function openPaddleCheckout(options?: {
   email?: string;
   successCallback?: (data: any) => void;
@@ -36,18 +44,39 @@ export function openPaddleCheckout(options?: {
   }
 
   const checkoutOptions = {
-    product: PADDLE_PRODUCT_ID,
-    email: options?.email,
-    successCallback: (data: any) => {
-      handlePurchaseSuccess(data, options?.navigate);
-      if (options?.successCallback) {
-        options.successCallback(data);
-      }
+    items: [
+      {
+        priceId: PADDLE_PRICE_ID,
+        quantity: 1,
+      },
+    ],
+    customer: options?.email ? { email: options.email } : undefined,
+    settings: {
+      displayMode: 'overlay',
+      theme: 'light',
+      locale: 'en',
     },
-    closeCallback: options?.closeCallback,
   };
 
-  (window as any).Paddle.Checkout.open(checkoutOptions);
+  (window as any).Paddle.Checkout.open(checkoutOptions)
+    .then((checkout: any) => {
+      // Listen for checkout completion
+      checkout.on('checkout.completed', (data: any) => {
+        handlePurchaseSuccess(data, options?.navigate);
+        if (options?.successCallback) {
+          options.successCallback(data);
+        }
+      });
+
+      checkout.on('checkout.closed', () => {
+        if (options?.closeCallback) {
+          options.closeCallback();
+        }
+      });
+    })
+    .catch((error: any) => {
+      console.error('Failed to open Paddle checkout:', error);
+    });
 }
 
 // Handle successful purchase
