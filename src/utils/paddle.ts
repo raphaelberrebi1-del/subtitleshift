@@ -19,14 +19,12 @@ export function initializePaddle() {
     script.onload = () => {
       (window as any).Paddle.Initialize({
         token: PADDLE_CLIENT_TOKEN,
-        environment: PADDLE_ENVIRONMENT,
       });
     };
   } else if ((window as any).Paddle && !(window as any).Paddle.Initialized) {
     // Already loaded but not initialized
     (window as any).Paddle.Initialize({
       token: PADDLE_CLIENT_TOKEN,
-      environment: PADDLE_ENVIRONMENT,
     });
   }
 }
