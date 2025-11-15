@@ -2,7 +2,7 @@ import { generateDemoLicenseKey, activateLicense } from './license';
 
 // Paddle Billing configuration
 export const PADDLE_CLIENT_TOKEN = 'test_769ac252d623b4ee99e11b48893'; // Sandbox client-side token
-export const PADDLE_PRICE_ID = 'pri_01ka4qk8gwrfyjm49nx805kdas'; // SubtitleShift Pro price ID
+export const PADDLE_PRICE_ID = 'pri_01ka4sqckvqb7b9epdfttnaspy'; // SubtitleShift Pro price ID (Sandbox)
 export const PADDLE_ENVIRONMENT = 'sandbox'; // 'sandbox' or 'production'
 
 // Initialize Paddle Billing (v2)
