@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProStatus } from '../hooks/useProStatus';
 import { activateLicense, deactivateLicense, generateDemoLicenseKey, getLicenseInfo } from '../utils/license';
-import { initializePaddle, openDemoCheckout } from '../utils/paddle';
+import { initializePaddle, openPaddleCheckout } from '../utils/paddle';
 import toast from 'react-hot-toast';
 
 interface Device {
@@ -165,9 +165,8 @@ export function ProBadge() {
   }
 
   const handleUpgradeClick = () => {
-    // Open Paddle checkout - or use demo checkout for testing
-    openDemoCheckout(navigate); // TODO: Replace with openPaddleCheckout() when you have Paddle credentials
-    // openPaddleCheckout();
+    // Open Paddle checkout in sandbox mode
+    openPaddleCheckout({ navigate });
   };
 
   return (
@@ -254,7 +253,7 @@ export function ProBadge() {
                 <button
                   onClick={() => {
                     setShowActivation(false);
-                    openDemoCheckout(navigate); // TODO: Replace with openPaddleCheckout() when you have Paddle credentials
+                    openPaddleCheckout({ navigate });
                   }}
                   className="text-primary-600 dark:text-primary-400 hover:underline text-sm font-medium"
                 >

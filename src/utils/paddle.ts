@@ -1,9 +1,8 @@
 import { generateDemoLicenseKey, activateLicense } from './license';
 
 // Paddle configuration
-// TODO: Replace with your actual Paddle credentials after setting up product
-export const PADDLE_VENDOR_ID = 'YOUR_PADDLE_VENDOR_ID'; // Get from Paddle Dashboard
-export const PADDLE_PRODUCT_ID = 'YOUR_PADDLE_PRODUCT_ID'; // Get after creating product
+export const PADDLE_VENDOR_ID = '41478'; // Paddle Sandbox Vendor ID
+export const PADDLE_PRODUCT_ID = 'pro_01ka4pyp8e7q9m90kbkrymgkn6'; // SubtitleShift Pro product
 
 // Initialize Paddle
 export function initializePaddle() {

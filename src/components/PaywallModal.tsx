@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { initializePaddle, openDemoCheckout } from '../utils/paddle';
+import { initializePaddle, openPaddleCheckout } from '../utils/paddle';
 
 interface PaywallModalProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export function PaywallModal({ isOpen, onClose, feature }: PaywallModalProps) {
 
   const handleUpgradeClick = () => {
     onClose();
-    openDemoCheckout(navigate); // TODO: Replace with openPaddleCheckout() when you have Paddle credentials
+    openPaddleCheckout({ navigate });
   };
 
   return (
@@ -142,7 +142,7 @@ export function UpgradeBanner({ message }: UpgradeBannerProps) {
   }, []);
 
   const handleUpgradeClick = () => {
-    openDemoCheckout(navigate); // TODO: Replace with openPaddleCheckout() when you have Paddle credentials
+    openPaddleCheckout({ navigate });
   };
 
   return (
