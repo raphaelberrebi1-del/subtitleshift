@@ -1,7 +1,7 @@
 import { generateDemoLicenseKey, activateLicense } from './license';
 
 // Paddle Billing configuration
-export const PADDLE_CLIENT_TOKEN = 'test_41478'; // Sandbox client-side token (test_<vendor_id>)
+export const PADDLE_CLIENT_TOKEN = 'test_769ac252d623b4ee99e11b48893'; // Sandbox client-side token
 export const PADDLE_PRICE_ID = 'pri_01ka4qk8gwrfyjm49nx805kdas'; // SubtitleShift Pro price ID
 export const PADDLE_ENVIRONMENT = 'sandbox'; // 'sandbox' or 'production'
 
