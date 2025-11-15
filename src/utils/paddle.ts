@@ -17,12 +17,14 @@ export function initializePaddle() {
     document.head.appendChild(script);
 
     script.onload = () => {
+      (window as any).Paddle.Environment.set('sandbox');
       (window as any).Paddle.Initialize({
         token: PADDLE_CLIENT_TOKEN,
       });
     };
   } else if ((window as any).Paddle && !(window as any).Paddle.Initialized) {
     // Already loaded but not initialized
+    (window as any).Paddle.Environment.set('sandbox');
     (window as any).Paddle.Initialize({
       token: PADDLE_CLIENT_TOKEN,
     });
